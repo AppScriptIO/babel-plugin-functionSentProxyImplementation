@@ -1,0 +1,15 @@
+{
+    "name": "@dependency/babel-plugin-functionSentProxyImplementation",
+    "version": "0.0.0",
+    "main": "./source/entrypoint/programmaticApi/transpilation.entrypoint.js",
+    "files": [
+        "./distribution"
+    ],
+    "scripts": {
+        "setup": "yarn install --production=false",
+        "test": "yarn run scriptManager test \"({ testPath: './test' })\"",
+        "generateTypes": "tsc --project ./configuration/typescript.config.json"
+    },
+    "dependencies": {},
+    "devDependencies": {}
+}

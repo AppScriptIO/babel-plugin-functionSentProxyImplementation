@@ -1,0 +1,12 @@
+*.DS_Store
+*.vagrant
+node_modules
+volume
+distribution
+Thumbs.db
+privateRepository
+bower_components
+jspm_packages
+npm-debug.log
+yarn-error\.log
+.\~vsdx
