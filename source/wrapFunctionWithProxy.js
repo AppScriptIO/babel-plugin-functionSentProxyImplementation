@@ -1,3 +1,8 @@
+/**
+ * An alternative to the official `babel-helper-wrap-function`. Instead of wrapping with a function, the target will be wrapped in a proxy, 
+ * intercepting only specific handlers (e.g. `apply`, `constructor`, etc.)
+ */
+
 import type { NodePath } from "@babel/traverse";
 import template from "@babel/template";
 import * as t from "@babel/types";

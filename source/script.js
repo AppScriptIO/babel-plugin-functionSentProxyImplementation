@@ -1,6 +1,6 @@
 import { declare } from "@babel/helper-plugin-utils";
 import syntaxFunctionSent from "@babel/plugin-syntax-function-sent";
-import proxyWrapFunction from "@babel/helper-proxy-wrap-function";
+import proxyWrapFunction from "./wrapFunctionWithProxy.js";
 import { types as t } from "@babel/core";
 
 export default declare(api => {
@@ -61,4 +61,5 @@ export default declare(api => {
       },
     },
   };
+  
 });
