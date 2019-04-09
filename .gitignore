@@ -2,7 +2,6 @@
 *.vagrant
 node_modules
 volume
-distribution
 Thumbs.db
 privateRepository
 bower_components
