@@ -1,3 +1,4 @@
-import runner from "@babel/helper-plugin-test-runner";
+// `jest` tests
+const runner = require("@babel/helper-plugin-test-runner").default
 
 runner(__dirname);
