@@ -1,3 +1,2 @@
-src
-test
-*.log
+# ignore all files in installation, except for those set in the `files` property in package.json.
+**/*

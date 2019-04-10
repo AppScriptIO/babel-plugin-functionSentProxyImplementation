@@ -1,5 +1,5 @@
 {
-    "name": "@dependency/babel-plugin-functionSentProxyImplementation",
+    "name": "@babel/babel-plugin-functionSentProxyImplementation",
     "version": "0.0.0",
     "main": "./distribution/script.js",
     "description": "Compile the function.sent meta propety to valid ES2015 code",
@@ -8,7 +8,7 @@
         "babel-plugin"
     ],
     "files": [
-        "./distribution"
+        "distribution/"
     ],
     "scripts": {
         "setup": "yarn install --production=false",
