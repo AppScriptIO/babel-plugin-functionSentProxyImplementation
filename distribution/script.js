@@ -26,7 +26,7 @@ function _pluginSyntaxFunctionSent() {
 }
 
 function _helperProxyWrapFunction() {
-  const data = _interopRequireDefault(require("@babel/helper-proxy-wrap-function"));
+  const data = _interopRequireDefault(require("./wrapFunctionWithProxy.js"));
 
   _helperProxyWrapFunction = function () {
     return data;
