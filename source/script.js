@@ -1,54 +1,105 @@
-import { declare } from '@babel/helper-plugin-utils'
-import syntaxFunctionSent from '@babel/plugin-syntax-function-sent'
-import proxyWrapFunction from './wrapFunctionWithProxy.js'
-import { types as t } from '@babel/core'
+"use strict";
 
-export default declare(api => {
-  api.assertVersion(7)
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
-  const isFunctionSent = node => t.isIdentifier(node.meta, { name: 'function' }) && t.isIdentifier(node.property, { name: 'sent' })
+function _helperPluginUtils() {
+  const data = require("@babel/helper-plugin-utils");
 
-  const hasBeenReplaced = (node, sentId) => t.isAssignmentExpression(node) && t.isIdentifier(node.left, { name: sentId })
+  _helperPluginUtils = function () {
+    return data;
+  };
+
+  return data;
+}
+
+function _pluginSyntaxFunctionSent() {
+  const data = _interopRequireDefault(require("@babel/plugin-syntax-function-sent"));
+
+  _pluginSyntaxFunctionSent = function () {
+    return data;
+  };
+
+  return data;
+}
+
+function _helperProxyWrapFunction() {
+  const data = _interopRequireDefault(require("./wrapFunctionWithProxy.js"));
+
+  _helperProxyWrapFunction = function () {
+    return data;
+  };
+
+  return data;
+}
+
+function _core() {
+  const data = require("@babel/core");
+
+  _core = function () {
+    return data;
+  };
+
+  return data;
+}
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = (0, _helperPluginUtils().declare)(api => {
+  api.assertVersion(7);
+
+  const isFunctionSent = node => _core().types.isIdentifier(node.meta, {
+    name: "function"
+  }) && _core().types.isIdentifier(node.property, {
+    name: "sent"
+  });
+
+  const hasBeenReplaced = (node, sentId) => _core().types.isAssignmentExpression(node) && _core().types.isIdentifier(node.left, {
+    name: sentId
+  });
 
   const yieldVisitor = {
     Function(path) {
-      path.skip()
+      path.skip();
     },
 
     YieldExpression(path) {
       if (!hasBeenReplaced(path.parent, this.sentId)) {
-        path.replaceWith(t.assignmentExpression('=', t.identifier(this.sentId), path.node))
+        path.replaceWith(_core().types.assignmentExpression("=", _core().types.identifier(this.sentId), path.node));
       }
     },
 
     MetaProperty(path) {
       if (isFunctionSent(path.node)) {
-        path.replaceWith(t.identifier(this.sentId))
+        path.replaceWith(_core().types.identifier(this.sentId));
       }
-    },
-  }
+    }
 
+  };
   return {
-    name: 'proposal-function-sent',
-    inherits: syntaxFunctionSent,
-
+    name: "proposal-function-sent",
+    inherits: _pluginSyntaxFunctionSent().default,
     visitor: {
       MetaProperty(path, state) {
-        if (!isFunctionSent(path.node)) return
-
-        const fnPath = path.getFunctionParent()
+        if (!isFunctionSent(path.node)) return;
+        const fnPath = path.getFunctionParent();
 
         if (!fnPath.node.generator) {
-          throw new Error('Parent generator function not found')
+          throw new Error("Parent generator function not found");
         }
 
-        const sentId = path.scope.generateUid('function.sent')
+        const sentId = path.scope.generateUid("function.sent");
+        fnPath.traverse(yieldVisitor, {
+          sentId
+        });
+        fnPath.node.body.body.unshift(_core().types.variableDeclaration("let", [_core().types.variableDeclarator(_core().types.identifier(sentId), _core().types.yieldExpression())]));
+        (0, _helperProxyWrapFunction().default)(fnPath, state.addHelper("skipFirstGeneratorNext"));
+      }
 
-        fnPath.traverse(yieldVisitor, { sentId })
-        fnPath.node.body.body.unshift(t.variableDeclaration('let', [t.variableDeclarator(t.identifier(sentId), t.yieldExpression())]))
+    }
+  };
+});
 
-        proxyWrapFunction(fnPath, state.addHelper('skipFirstGeneratorNext'))
-      },
-    },
-  }
-})
+exports.default = _default;
