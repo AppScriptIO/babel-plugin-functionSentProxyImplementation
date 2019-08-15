@@ -20,6 +20,7 @@
     "typescript.validate.enable": true, // enable/disable default VSCode Typescript validator.
     "javascript.validate.enable": false, // disable default VSCode Javascript validator.
     "javascript.implicitProjectConfig.experimentalDecorators": true,
+    "eslint.enable": true,
     "eslint.options": {
         "configFile": "./configuration/eslint.config.js"
     },
@@ -49,6 +50,5 @@
     "eslint.codeAction.showDocumentation": {
         "enable": true
     },
-    "typescript.check.npmIsInstalled": false,
-    "eslint.enable": true
+    "typescript.check.npmIsInstalled": false
 }

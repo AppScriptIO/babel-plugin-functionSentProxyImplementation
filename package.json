@@ -8,10 +8,7 @@
         "babel-plugin"
     ],
     "scripts": {
-        "setup": "yarn install --production=false",
-        "test": "./script/test.sh",
-        "test-scriptManager": "yarn run scriptManager test \"({ testPath: './test' })\"",
-        "generateTypes": "tsc --project ./configuration/typescript.config.json"
+        "buildAndRelease": "yarn run scriptManager shouldCompileScript=true JSProject/buildAndRelease \".moduleProject({})\""
     },
     "dependencies": {
         "@babel/helper-plugin-utils": "^7.0.0",
