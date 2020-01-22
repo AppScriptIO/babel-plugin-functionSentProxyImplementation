@@ -1,6 +1,6 @@
 {
 	"name": "@babel/babel-plugin-functionSentProxyImplementation",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"main": "./entrypoint/programmaticAPI",
 	"description": "Compile the function.sent meta propety to valid ES2015 code",
 	"license": "MIT",
