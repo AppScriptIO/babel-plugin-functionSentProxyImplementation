@@ -1,6 +1,6 @@
 {
 	"name": "@babel/babel-plugin-functionSentProxyImplementation",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"main": "./entrypoint/programmaticAPI",
 	"description": "Compile the function.sent meta propety to valid ES2015 code",
 	"license": "MIT",
@@ -8,8 +8,8 @@
 		"babel-plugin"
 	],
 	"scripts": {
-		"build": "yarn run scriptManager shouldCompileScript=true @dependency/deploymentScript \".buildSourceCode.moduleProject({}, {compile:[/**'./test'*/]})\"",
-		"buildAndRelease": "yarn run scriptManager shouldCompileScript=true @dependency/deploymentScript \".buildAndRelease.moduleProject({})\""
+		"build": "yarn run scriptManager shouldCompileScript=true @deployment/deploymentScript \".buildSourceCode.moduleProject({}, {compile:[/**'./test'*/]})\"",
+		"buildAndRelease": "yarn run scriptManager shouldCompileScript=true @deployment/deploymentScript \".buildAndRelease.moduleProject({})\""
 	},
 	"dependencies": {
 		"@babel/helper-plugin-utils": "^7.0.0",
@@ -21,10 +21,10 @@
 	"devDependencies": {
 		"@babel/core": "^7.2.0",
 		"@babel/helper-plugin-test-runner": "^7.0.0",
-		"@dependency/deploymentScript": "https://github.com/AppScriptIO/deploymentScript#semver:^2.x.x",
-		"@dependency/javascriptStaticAnalysis": "https://github.com/AppScriptIO/javascriptStaticAnalysis#semver:^1.x.x",
-		"@dependency/javascriptTranspilation": "https://github.com/AppScriptIO/javascriptTranspilation#semver:^2.x.x",
-		"@dependency/scriptManager": "https://github.com/AppScriptIO/scriptManager#semver:^1.x.x",
+		"@deployment/deploymentScript": "https://github.com/AppScriptIO/deploymentScript#semver:^2.x.x",
+		"@deployment/javascriptStaticAnalysis": "https://github.com/AppScriptIO/javascriptStaticAnalysis#semver:^2.x.x",
+		"@deployment/javascriptTranspilation": "https://github.com/AppScriptIO/javascriptTranspilation#semver:^2.x.x",
+		"@deployment/scriptManager": "https://github.com/AppScriptIO/scriptManager#semver:^2.x.x",
 		"jest": "^24.7.1",
 		"typescript": "^3.3.3333"
 	}
